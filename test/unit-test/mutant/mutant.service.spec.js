@@ -9,13 +9,13 @@ describe('Mutant Service', () => {
   });
 
   it('should throw an error in case of an incorrect DNA sequence', () => {
-    const sequence = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCSCCTA", "TCACTG"];
+    const sequence = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCSCCT", "TCACTG"];
     expect(() => mutantService.isMutant(sequence)).to.throw('There is an error in this DNA sequence. Not alowed chars.');
   });
 
-  it('should throw an error if the sequence is not a NxN matrix', () => {
+  it('should throw an error if the sequence is not a NxN utilities', () => {
     const sequence = ["ATGCGA", "CAGTGC", "TTATGT", "AGAAGG"];
-    expect(() => mutantService.isMutant(sequence)).to.throw('There is an error in this DNA sequence. Not a NxN matrix.');
+    expect(() => mutantService.isMutant(sequence)).to.throw('There is an error in this DNA sequence. Not a NxN utilities.');
   });
 
   it('should return True when a mutant DNA is passed just in lines', () => {
@@ -58,6 +58,12 @@ describe('Mutant Service', () => {
     const sequence = ["ATGCGA", "CATTCT", "TCGGGG", "AAATGG", "CATCTG", "TCACTG"];
     const result = mutantService.isMutant(sequence);
     expect(result).to.be.true;
+  });
+
+  it('should return False if a no mutant DNA is passed', () => {
+    const sequence = ['ATGCGA', 'CAGTGC', 'TTATTT', 'AGACGG', 'GCGTCA', 'TCACTG'];
+    const result = mutantService.isMutant(sequence);
+    expect(result).to.not.be.true;
   });
 
 });

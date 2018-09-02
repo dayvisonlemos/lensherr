@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "unit-test": "node_modules/mocha/bin/_mocha --opts test/mocha.opts --recursive ./test/**/*.spec.js",
-    "test": "npm run unit-test"
+    "test": "npm run unit-test",
+    "coverage": "nyc npm test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.1.2",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1"
   }
 }
