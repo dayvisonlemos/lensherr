@@ -127,9 +127,23 @@ describe('Mutant Controller', () => {
       });
   });
 
-  it('should return False if a no mutant DNA is passed', (done) => {
+  it('should return False if no mutant DNA is passed', (done) => {
     const dna = {
       dna: ['ATGCGA', 'CAGTGC', 'TTATTT', 'AGACGG', 'GCGTCA', 'TCACTG'],
+    };
+    request.post('/mutant')
+      .send(dna)
+      .end((err, res) => {
+        const result = res.body;
+        expect(res.forbidden).to.be.equal(true);
+        expect(result.error).to.be.equal('This dna sequence does not belong to a mutant.');
+        done(err);
+      });
+  });
+
+  it('should return False if there is no mutant DNA in sequence', (done) => {
+    const dna = {
+      dna: ['ATGCGA', 'CAGTGC', 'TTATTT', 'TGACGG', 'GCGTAA', 'AAACTG'],
     };
     request.post('/mutant')
       .send(dna)
