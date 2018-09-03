@@ -7,5 +7,8 @@ module.exports = {
     "afterEach": true,
     "beforeEach": true,
     "after": true
+  },
+  "rules": {
+    "class-methods-use-this": "off",
   }
 };

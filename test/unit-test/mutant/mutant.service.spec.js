@@ -16,7 +16,7 @@ describe('Mutant Service', () => {
 
   it('should throw an error if the sequence is not a NxN utilities', () => {
     const sequence = ['ATGCGA', 'CAGTGC', 'TTATGT', 'AGAAGG'];
-    expect(() => mutantService.isMutant(sequence)).to.throw('There is an error in this DNA sequence. Not a NxN utilities.');
+    expect(() => mutantService.isMutant(sequence)).to.throw('There is an error in this DNA sequence. Not a quadract matrix.');
   });
 
   it('should return True when a mutant DNA is passed just in lines', () => {

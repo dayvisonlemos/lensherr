@@ -1,3 +1,4 @@
+const BadRequestError = require('../exception/badrequest.error');
 const matrix = require('../utilities/matrix');
 
 module.exports = class MutantService {
@@ -14,11 +15,11 @@ module.exports = class MutantService {
   isMutant(dna) {
     const dnaMatrix = matrix.fromDnaSequence(dna);
 
-    if (!matrix.isQuadratic(dnaMatrix)) throw new Error('There is an error in this DNA sequence. Not a NxN utilities.');
+    if (!matrix.isQuadratic(dnaMatrix)) throw new BadRequestError('There is an error in this DNA sequence. Not a quadract matrix.');
 
     let sequence = matrix.toString(dnaMatrix);
 
-    if (!this.allowedChar.test(sequence)) throw new Error('There is an error in this DNA sequence. Not alowed chars.');
+    if (!this.allowedChar.test(sequence)) throw new BadRequestError('There is an error in this DNA sequence. Not alowed chars.');
 
     const transposed = matrix.transpose(dnaMatrix);
     const transversed = matrix.transverse(dnaMatrix);
