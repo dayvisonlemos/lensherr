@@ -1,13 +1,15 @@
+/* global expect */
+
 const matrix = require('../../../src/utilities/matrix');
 
 describe('Matrix', () => {
   it('shoud return a matrix from a dna sequence', () => {
-    const dna = ["AAAA", "CCCC", "TTTT", "GGGG"];
+    const dna = ['AAAA', 'CCCC', 'TTTT', 'GGGG'];
     const expected = [
       ['A', 'A', 'A', 'A'],
       ['C', 'C', 'C', 'C'],
       ['T', 'T', 'T', 'T'],
-      ['G', 'G', 'G', 'G']
+      ['G', 'G', 'G', 'G'],
     ];
 
     const result = matrix.fromDnaSequence(dna);
@@ -20,13 +22,13 @@ describe('Matrix', () => {
       ['A', 'A', 'A', 'A'],
       ['C', 'C', 'C', 'C'],
       ['T', 'T', 'T', 'T'],
-      ['G', 'G', 'G', 'G']
+      ['G', 'G', 'G', 'G'],
     ];
     const expected = [
       ['A', 'C', 'T', 'G'],
       ['A', 'C', 'T', 'G'],
       ['A', 'C', 'T', 'G'],
-      ['A', 'C', 'T', 'G']
+      ['A', 'C', 'T', 'G'],
     ];
 
     const transposed = matrix.transpose(defaultMatrix);
@@ -39,7 +41,7 @@ describe('Matrix', () => {
       ['A', 'B', 'C', 'D'],
       ['E', 'F', 'G', 'H'],
       ['I', 'J', 'K', 'L'],
-      ['M', 'N', 'O', 'P']
+      ['M', 'N', 'O', 'P'],
     ];
     const expected = [
       ['A', 'F', 'K', 'P'],
@@ -68,7 +70,7 @@ describe('Matrix', () => {
       ['A', 'A', 'A', 'A'],
       ['C', 'C', 'C', 'C'],
       ['T', 'T', 'T', 'T'],
-      ['G', 'G', 'G', 'G']
+      ['G', 'G', 'G', 'G'],
     ];
 
     const result = matrix.toString(defaultMatrix);
@@ -81,7 +83,7 @@ describe('Matrix', () => {
       ['A', 'C', 'T', 'G'],
       ['A', 'C', 'T', 'G'],
       ['A', 'C', 'T', 'G'],
-      ['A', 'C', 'T', 'G']
+      ['A', 'C', 'T', 'G'],
     ];
 
     const result = matrix.toString(trasposed);
@@ -104,7 +106,7 @@ describe('Matrix', () => {
       ['D'],
       ['M'],
       ['P'],
-      ['A']
+      ['A'],
     ];
 
     const result = matrix.toString(transversed);
@@ -117,12 +119,12 @@ describe('Matrix', () => {
       ['A', 'B', 'C', 'D'],
       ['E', 'F', 'G', 'H'],
       ['I', 'J', 'K', 'L'],
-      ['M', 'N', 'O', 'P']
+      ['M', 'N', 'O', 'P'],
     ];
 
     const result = matrix.isQuadratic(defaultMatrix);
 
-    expect(result).to.be.true;
+    expect(result).to.be.equal(true);
   });
 
   it('shoud return false if a matrix is not quadratic', () => {
@@ -130,12 +132,11 @@ describe('Matrix', () => {
       ['A', 'B', 'C'],
       ['E', 'F', 'G'],
       ['I', 'J', 'K'],
-      ['M', 'N', 'O']
+      ['M', 'N', 'O'],
     ];
 
     const result = matrix.isQuadratic(defaultMatrix);
 
-    expect(result).to.not.be.true;
+    expect(result).to.be.equal(false);
   });
-
 });
