@@ -5,3 +5,7 @@ script:
   - npm run lint
   - npm test
   - npm run coverage
+deploy:
+  provider: heroku
+  app: xlensherr
+  api_key: 1ac3bf58-5e3a-453c-8756-b12d7a5b0b46
