@@ -1,7 +1,7 @@
 const BadRequestError = require('../exception/badrequest.error');
 const matrix = require('../utilities/matrix');
 
-module.exports = class MutantService {
+class MutantService {
   constructor() {
     this.allowedChar = /^[A|T|C|G|. ]+$/;
     this.pattern = /((A+){4}|(T+){4}|(C+){4}|(G+){4})/g;
@@ -14,19 +14,28 @@ module.exports = class MutantService {
 
   isMutant(dna) {
     const dnaMatrix = matrix.fromDnaSequence(dna);
-
-    if (!matrix.isQuadratic(dnaMatrix)) throw new BadRequestError('There is an error in this DNA sequence. Not a quadract matrix.');
+    if (!matrix.isQuadratic(dnaMatrix)) throw new BadRequestError('You "homo sapiens" and your guns!. This is not a square matrix.');
 
     let sequence = matrix.toString(dnaMatrix);
 
-    if (!this.allowedChar.test(sequence)) throw new BadRequestError('There is an error in this DNA sequence. Not alowed chars.');
+    if (!this.allowedChar.test(sequence)) throw new BadRequestError('Peace was never an option. Invalid characters in the dna sequence.');
+
+    let countDnaMutant = 0;
+    countDnaMutant += this.analizeSequence(sequence);
+    if (countDnaMutant > 1) return true;
 
     const transposed = matrix.transpose(dnaMatrix);
+    sequence = matrix.toString(transposed);
+    countDnaMutant += this.analizeSequence(sequence);
+    if (countDnaMutant > 1) return true;
+
     const transversed = matrix.transverse(dnaMatrix);
+    sequence = matrix.toString(transversed);
+    countDnaMutant += this.analizeSequence(sequence);
+    if (countDnaMutant > 1) return true;
 
-    sequence = `${sequence} ${matrix.toString(transposed)} ${matrix.toString(transversed)}`;
-    const countDnaMutant = this.analizeSequence(sequence);
-
-    return countDnaMutant > 1;
+    return false;
   }
-};
+}
+
+module.exports = new MutantService();

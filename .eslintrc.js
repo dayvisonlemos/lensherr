@@ -6,7 +6,9 @@ module.exports = {
     "before": true,
     "afterEach": true,
     "beforeEach": true,
-    "after": true
+    "after": true,
+    "expect": true,
+    "request": true
   },
   "rules": {
     "class-methods-use-this": "off",

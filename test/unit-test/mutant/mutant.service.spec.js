@@ -1,22 +1,14 @@
-/* global expect */
-
-const MutantService = require('../../../src/mutant/mutant.service');
+const mutantService = require('../../../src/mutant/mutant.service');
 
 describe('Mutant Service', () => {
-  let mutantService;
-
-  beforeEach(() => {
-    mutantService = new MutantService();
-  });
-
   it('should throw an error in case of an incorrect DNA sequence', () => {
     const sequence = ['ATGCGA', 'CAGTGC', 'TTATGT', 'AGAAGG', 'CCSCCT', 'TCACTG'];
-    expect(() => mutantService.isMutant(sequence)).to.throw('There is an error in this DNA sequence. Not alowed chars.');
+    expect(() => mutantService.isMutant(sequence)).to.throw('Peace was never an option. Invalid characters in the dna sequence.');
   });
 
   it('should throw an error if the sequence is not a NxN utilities', () => {
     const sequence = ['ATGCGA', 'CAGTGC', 'TTATGT', 'AGAAGG'];
-    expect(() => mutantService.isMutant(sequence)).to.throw('There is an error in this DNA sequence. Not a quadract matrix.');
+    expect(() => mutantService.isMutant(sequence)).to.throw('You "homo sapiens" and your guns!. This is not a square matrix.');
   });
 
   it('should return True when a mutant DNA is passed just in lines', () => {

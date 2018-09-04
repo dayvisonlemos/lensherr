@@ -1,5 +1,3 @@
-/* global expect */
-
 const matrix = require('../../../src/utilities/matrix');
 
 describe('Matrix', () => {

@@ -1,6 +1,13 @@
-/* global expect request */
+const { Stats } = require('../../../src/models');
 
 describe('Mutant Controller', () => {
+  afterEach((done) => {
+    Stats.destroy({ where: {} })
+      .then(() => {
+        done();
+      });
+  });
+
   it('should throw an error in case of an incorrect DNA sequence', (done) => {
     const dna = {
       dna: ['ATGCGA', 'CAGTGC', 'TTATGT', 'AGAAGG', 'CCSCCT', 'TCACTG'],
@@ -10,7 +17,7 @@ describe('Mutant Controller', () => {
       .end((err, res) => {
         const result = res.body;
         expect(res.badRequest).to.be.equal(true);
-        expect(result.error).to.be.equal('There is an error in this DNA sequence. Not alowed chars.');
+        expect(result.error).to.be.equal('Peace was never an option. Invalid characters in the dna sequence.');
         done(err);
       });
   });
@@ -24,7 +31,7 @@ describe('Mutant Controller', () => {
       .end((err, res) => {
         const result = res.body;
         expect(res.badRequest).to.be.equal(true);
-        expect(result.error).to.be.equal('There is an error in this DNA sequence. Not a quadract matrix.');
+        expect(result.error).to.be.equal('You "homo sapiens" and your guns!. This is not a square matrix.');
         done(err);
       });
   });
@@ -136,7 +143,7 @@ describe('Mutant Controller', () => {
       .end((err, res) => {
         const result = res.body;
         expect(res.forbidden).to.be.equal(true);
-        expect(result.error).to.be.equal('This dna sequence does not belong to a mutant.');
+        expect(result.error).to.be.equal('Toad has a wicked tongue Senator, just like you.');
         done(err);
       });
   });
@@ -150,7 +157,7 @@ describe('Mutant Controller', () => {
       .end((err, res) => {
         const result = res.body;
         expect(res.forbidden).to.be.equal(true);
-        expect(result.error).to.be.equal('This dna sequence does not belong to a mutant.');
+        expect(result.error).to.be.equal('Toad has a wicked tongue Senator, just like you.');
         done(err);
       });
   });
