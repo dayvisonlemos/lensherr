@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node_modules/.bin/nodemon index.js ",
-    "unit-test": "NODE_ENV=test node_modules/mocha/bin/_mocha --opts test/mocha.opts --recursive ./test/unit-test/**/*.spec.js",
+    "unit-test": "node_modules/mocha/bin/_mocha --opts test/mocha.opts --recursive ./test/unit-test/**/*.spec.js",
     "integration-test": "NODE_ENV=test node_modules/mocha/bin/_mocha --opts test/mocha.opts --recursive ./test/integration-test/**/*.spec.js",
     "test": "npm run unit-test && npm run integration-test",
     "coverage": "nyc npm test",
