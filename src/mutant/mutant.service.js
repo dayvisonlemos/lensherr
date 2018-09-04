@@ -20,8 +20,7 @@ class MutantService {
 
     if (!this.allowedChar.test(sequence)) throw new BadRequestError('Peace was never an option. Invalid characters in the dna sequence.');
 
-    let countDnaMutant = 0;
-    countDnaMutant += this.analizeSequence(sequence);
+    let countDnaMutant = this.analizeSequence(sequence);
     if (countDnaMutant > 1) return true;
 
     const transposed = matrix.transpose(dnaMatrix);
