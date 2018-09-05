@@ -10,6 +10,9 @@ $ npm i
 # Rodar Testes unitários e testes de integração
 $ npm test
 
+# Validar cobertura de testes
+$ npm run coverage
+
 # Executar a api
 $ npm start
 ```
